@@ -1,23 +1,20 @@
 # Dragon Realm Midterm
 # A game by Amanda Huynh
 # December 22, 2017
-
 # import stuff
 import random
 import time
-
 # Global Variables
 score = 0
 Bag1 = {'Flask of Enchancement and Enhancement','Clementine Sword of the Breathern'}
 Bag2 = {'Cloak of Dryaden Invisibility','Staff of Jokes'}
-
+itemsOnPerson = '' 
 # Show Introduction
 def show_intro():
     print('''You've lost your map and there seems to be
 no trace of the merchant's caravan you stowed away on. You see two path
 diverging into different caves, both of which are dark and gloomy. ''')
     print()
-
     print('''You see a dark figure where the two paths diverge. You tentatively
 approach.''')
     time.sleep(2)
@@ -34,12 +31,10 @@ in such a friendly, though nosy, manner.''')
     def player_response():
         player_response = ""
     print('''You finally break out of your silence and open your mouth to speak.
-
 What do you say? (1 or 2)
 1) I'm a nobody from no where in particular. I have lost my sense of
 direction.
 2) You're annoying. Who are YOU? ''')
-
     while player_response != "1" and player_response != "2":
         player_response = input()
         if player_response == "1":
@@ -91,14 +86,12 @@ you command your enemy to stop.''')
     return player_response
 print()
 time.sleep(5)
-
 def choose_cave():
     cave = ""
     while cave != "1" and cave != "2":
         print("Which cave will you go into? (1 or 2)")
         cave = input()
     return cave
-
 def check_cave(cave_chosen):
     global score
     print("You approach the mouth of the cave slowly...")
@@ -118,8 +111,9 @@ You grab handfuls of stolen treasure and stuff them into your pockets and bag.''
         chosenItem = ''
         print('''You decide to use:''')
         time.sleep(2)
-        while chosenItem not in Bag1:      
-            for item in Bag1:
+        while chosenItem not in Bag2:
+      
+            for item in Bag2:
                 print(" "+item)
                 time.sleep(1)
                 print()
@@ -192,10 +186,5 @@ def play():
             stillPlaying = False
     print("Your score: " + str(score))
     print("Goodbye! Thanks for playing!")
-
 # Play the game!
 play()
-
-
-
-
