@@ -8,6 +8,8 @@ import time
 
 # Global Variables
 score = 0
+Bag1 = {'Flask of Enchancement and Enhancement','Clementine Sword of the Breathern'}
+Bag2 = {'Cloak of Dryaden Invisibility','Staff of Jokes'}
 
 # Show Introduction
 def show_intro():
@@ -57,16 +59,16 @@ I'm the guardian of these caves. In one cave, the dragon is friendly
 and will share his treasure with you. The other dragon is
 malicious and menacing, and will eat you on site. You're going to need weapons
 for protection. Luckily, I have some. However, you have to ask POLITELY. :) ''')
-
     time.sleep(2)
     print('''You contemplate this throughly and suppress a sigh. You have no other option
 but to trust the dryad.''')
-    time.sleep(1)
+    time.sleep(3)
     print('''May you please provide me with some weapons for my journey, you magnificent
 dryad?''')
+    time.sleep(3)
     print('''The flattery seems to have worked. The dryad smiles and says," What
 weapons do you desire?" ''')
-    time.sleep(1)
+    time.sleep(2)
     def weapon_response():
         weapon_response = ""
     print('''The dryad offers you two bags. Which do you choose? (1 or 2)
@@ -75,21 +77,16 @@ Bag 2 Contents: Cloak of Dryaden Invisibility and Staff of Jokes''')
     while weapon_response != "1" and weapon_response != "2":
         weapon_response = input()
         if weapon_response == "1":
-            print('''Here is Bag 1. The Flask of Enchancement and Enhancement
+            print('''Here is Bag 1. Item 1: The Flask of Enchancement and Enhancement
 can spell bound any enemies you face or enhance your fighting and defense abilities.
-The Ring of Elemental Control can be used to change fire, air, earth, and water.
-The Potion of Healing can heal you instantaneously, the moment you drink it. The
-Clementine Sword of the Breathern will call upon ghosts to help you fight against
+Item 2: The Clementine Sword of the Breathern will call upon ghosts to help you fight against
 evils.''')
-    else:
-        print('''Here is Bag 2. The Cloak of Dryaden Invisibility has been passed
+        else:
+            print('''Here is Bag 2. Item 1: The Cloak of Dryaden Invisibility has been passed
 down through generations of dryads. You will remain invisible the moment you cover yourself.
-Unlike any normal cloak, it will not slip off of you unless you command it to. The Staff of
+Unlike any normal cloak, it will not slip off of you unless you command it to. Item 2: The Staff of
 Jokes will make your enemy stop in its tracks and start telling jokes. It is bounded until
-you command your enemy to stop. The Seven Wonders Healing Potion has the rarest healing
-herbs and liquids. You will be restored to a health better than your original state.
-Lastly, the Wand of Binding will force your enemy to serve you and act under your command.''')
-        print("What item do you choose?")
+you command your enemy to stop.''')
     return weapon_response
     return player_response
 print()
@@ -116,15 +113,21 @@ You grab handfuls of stolen treasure and stuff them into your pockets and bag.''
     print()
     print("Suddenly, you hear loud thumps at the back of the cave. and freeze.")
     time.sleep(3)
-
-def choose_item():
-    item = ""
-        print('''What item do you take out?''')
-        item = input()
-    return item
     
-def use_item(item_chosen):
-    print("You hold your item in hand.")
+    def choose_item():
+        chosenItem = ''
+        print('''You decide to use:''')
+        time.sleep(2)
+        while chosenItem not in Bag1:      
+            for item in Bag1:
+                print(" "+item)
+                time.sleep(1)
+                print()
+            print('What item do you pick up?')
+            chosenItem = input()
+        print('You have chosen:', chosenItem)
+        return chosenItem
+    choose_item()
     print('''You squint into the darkness and
 simultaneously, the head of a dragon appears...''')
     time.sleep(4)
@@ -162,11 +165,16 @@ and...''')
         dodge_fart = input()
         if dodge_fart == "r" and dodge_fart == "r":
             print("You successfully escaped the fart!")
+            time.sleep(2)
             print('''On the contrary, some of the shiny treasures in your pocket falls,
 but at least you are alive.''')
             score += 3
+            time.sleep(2)
+            print('''The dragon attempts to chase you again. What do you do? (1 or 2)
+1. Use your item
+2. Run''')
         else:
-            print("You got hit with the stinkest fart ever! You faint and never wake up!")
+            print("You got hit with the stinkest fart ever! You faint and never wake up! Press Enter to Continue")
             score += -800
         dodge = input()
         if score >= 1:
