@@ -91,51 +91,51 @@ while True:
                 foods.append(pygame.Rect(random.randint(0, WINDOWWIDTH), random.randint(0, WINDOWHEIGHT),
                 FOODSIZE, FOODSIZE))
 
-        foodCounter += 1
-        if foodCounter >= NEWFOOD:
-            #add new food
-            foodCounter = 0
-            foods.append(pygame.Rect(random.randint(0, WINDOWWIDTH), random.randint(0, WINDOWHEIGHT),
-            FOODSIZE, FOODSIZE))
+    foodCounter += 1
+    if foodCounter >= NEWFOOD:
+        #add new food
+        foodCounter = 0
+        foods.append(pygame.Rect(random.randint(0, WINDOWWIDTH), random.randint(0, WINDOWHEIGHT),
+        FOODSIZE, FOODSIZE))
 
-        #draw the white background
-        windowSurface.fill(WHITE)
+    #draw the white background
+    windowSurface.fill(WHITE)
 
-        #move the player
-        if moveDown and player.bottom < WINDOWHEIGHT:
-            player.top += MOVESPEED
-        if moveUp and player.top > 0:
-            player.top -= MOVESPEED
-        if moveLeft and player.left > 0:
-            player.right -= MOVESPEED
-        if moveRight and player.right < WINDOWHEIGHT:
-            player.right += MOVESPEED
+    #move the player
+    if moveDown and player.bottom < WINDOWHEIGHT:
+        player.top += MOVESPEED
+    if moveUp and player.top > 0:
+        player.top -= MOVESPEED
+    if moveLeft and player.left > 0:
+        player.right -= MOVESPEED
+    if moveRight and player.right < WINDOWHEIGHT:
+        player.right += MOVESPEED
 
-        #draw the player onto the surface
-        #pygame.draw.rect(windowSurface, BLACK, player)
-        windowSurface.blit(playerStretchedImage, player)
+    #draw the player onto the surface
+    #pygame.draw.rect(windowSurface, BLACK, player)
+    windowSurface.blit(playerStretchedImage, player)
 
-        #checking whether our player is eating or touching any other food sources
-        for food in foods[:]:
-            if player.colliderect(food):
-                foods.remove(food)
-                #add effects to the player in here
-                player = pygame.Rect(player.left, player.top, player.width+2, player.height+2)
-                playerStretchedImage = pyame.transform.scale(playerImage, (player.width,
-                player.height)
-                    if musicPlaying
+    #checking whether our player is eating or touching any other food sources
+    for food in foods[:]:
+        if player.colliderect(food):
+            foods.remove(food)
+            #add effects to the player in here
+            player = pygame.Rect(player.left, player.top, player.width+2, player.height+2)
+            playerStretchedImage = pyame.transform.scale(playerImage, (player.width,
+            player.height)
+                
                                                                             
 
-        #drawing the food
-            for i in range(len(food)):
-            #pygame.draw.rect(windowSurface, GREEN, foods[i])
+    # draw the food
+    for i in range(len(foods)):
+        pygame.draw.rect(windowSurface, GREEN, foods[i])
             #rectangular object is 'food'
             #our image is 'foodImage'
             #
 
-        #draw the window onto the sreen
-        pygame.display.update()
-        mainClock.tick(40)
+    #draw the window onto the sreen
+    pygame.display.update()
+    mainClock.tick(40)
             
             
             
